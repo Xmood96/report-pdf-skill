@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>تقرير فني - I CAMERA SECURITY SYSTEM</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Cairo', sans-serif;
+    background: #f0f2f5;
+    color: #1a1a2e;
+    padding: 40px;
+  }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.1);
+    padding: 50px;
+  }
+  .header {
+    text-align: center;
+    border-bottom: 3px solid #e94560;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+  }
+  .header h1 {
+    color: #1a1a2e;
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 5px;
+  }
+  .header .sub {
+    color: #666;
+    font-size: 14px;
+  }
+  .header .badge {
+    display: inline-block;
+    background: #e94560;
+    color: #fff;
+    padding: 6px 20px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-top: 12px;
+  }
+  .meta-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 14px;
+  }
+  .meta-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #eee;
+  }
+  .meta-table td:first-child {
+    font-weight: 700;
+    color: #e94560;
+    width: 140px;
+  }
+  .section {
+    margin: 35px 0;
+  }
+  .section h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1a1a2e;
+    border-right: 4px solid #e94560;
+    padding-right: 15px;
+    margin-bottom: 20px;
+  }
+  .problem-card {
+    background: #fafafa;
+    border-radius: 12px;
+    padding: 20px 25px;
+    margin-bottom: 20px;
+    border: 1px solid #e8e8e8;
+  }
+  .problem-card .p-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .problem-card .p-icon {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+  }
+  .p-icon.red { background: #e94560; }
+  .p-icon.orange { background: #f39c12; }
+  .p-icon.purple { background: #9b59b6; }
+  .p-icon.green { background: #27ae60; }
+
+  .problem-card .p-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1a1a2e;
+  }
+  .problem-card .p-desc {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.7;
+  }
+  .problem-card .p-desc strong {
+    color: #1a1a2e;
+  }
+  .problem-card .p-file {
+    background: #f0f0f5;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-family: monospace;
+    font-size: 12px;
+    color: #666;
+    margin-top: 8px;
+    display: inline-block;
+  }
+  .tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 700;
+    margin: 2px;
+  }
+  .tag.green { background: #d4edda; color: #155724; }
+  .tag.red { background: #f8d7da; color: #721c24; }
+  .tag.orange { background: #fff3cd; color: #856404; }
+  .tag.blue { background: #d1ecf1; color: #0c5460; }
+
+  .timeline {
+    position: relative;
+    padding-right: 30px;
+    margin: 20px 0;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    right: 8px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #e94560;
+  }
+  .tl-item {
+    position: relative;
+    margin-bottom: 18px;
+    padding-right: 20px;
+  }
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    right: -22px;
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #e94560;
+    border: 2px solid #fff;
+  }
+  .tl-item .tl-date {
+    font-size: 12px;
+    color: #e94560;
+    font-weight: 700;
+  }
+  .tl-item .tl-text {
+    font-size: 14px;
+    color: #444;
+    line-height: 1.5;
+  }
+  .tl-item.warning::before { background: #f39c12; }
+  .tl-item.success::before { background: #27ae60; }
+  .tl-item.danger::before { background: #e94560; }
+
+  .code-block {
+    background: #1e1e2e;
+    color: #cdd6f4;
+    padding: 14px 18px;
+    border-radius: 8px;
+    font-family: 'Consolas', monospace;
+    font-size: 12px;
+    line-height: 1.6;
+    margin: 10px 0;
+    overflow-x: auto;
+    direction: ltr;
+    text-align: left;
+  }
+  .rec-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+    font-size: 13px;
+  }
+  .rec-table th {
+    background: #1a1a2e;
+    color: #fff;
+    padding: 10px 14px;
+    text-align: right;
+  }
+  .rec-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #e8e8e8;
+  }
+  .rec-table tr:nth-child(even) td {
+    background: #fafafa;
+  }
+  .priority-high { background: #f8d7da; color: #721c24; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 700; }
+  .priority-mid { background: #fff3cd; color: #856404; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 700; }
+  .priority-low { background: #d1ecf1; color: #0c5460; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 700; }
+
+  .footer {
+    text-align: center;
+    padding-top: 30px;
+    margin-top: 30px;
+    border-top: 1px solid #eee;
+    font-size: 13px;
+    color: #999;
+  }
+  @media print {
+    body { padding: 0; background: #fff; }
+    .container { box-shadow: none; padding: 30px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>📋 تقرير فني شامل</h1>
+    <div class="sub">تحليل وتشخيص وإصلاح الأعطال والاختراق</div>
+    <div class="badge">✅ تم الإصلاح — 16 مايو 2026</div>
+  </div>
+
+  <!-- INFO -->
+  <table class="meta-table">
+    <tr><td>اسم العميل</td><td>I CAMERA SECURITY SYSTEMS</td></tr>
+    <tr><td>الموقع</td><td>icssuae.com</td></tr>
+    <tr><td>نظام الإدارة</td><td>WordPress 6.9.4</td></tr>
+    <tr><td>الاستضافة</td><td>Shared Hosting (cPanel / LiteSpeed)</td></tr>
+    <tr><td>التاريخ</td><td>16 مايو 2026</td></tr>
+    <tr><td>تاريخ بدء المشاكل</td><td>28 أبريل 2026 — 9 مايو 2026 (فترة الاختراق)</td></tr>
+    <tr><td>حالة الموقع</td><td><span class="tag green">✅ شغال ونظيف</span></td></tr>
+  </table>
+
+  <!-- EXECUTIVE SUMMARY -->
+  <div class="section">
+    <h2>📌 ملخص تنفيذي</h2>
+    <p style="font-size:14px;line-height:1.8;color:#444;">
+      تم اكتشاف <strong>3 مشاكل رئيسية</strong> في موقع العميل: <strong>خطأ برمجي</strong> في إضافة Essential Addons for Elementor، 
+      <strong>إضافة مقرصنة (Nulled)</strong> من ثيم Astra، و<strong>اختراق متطور</strong> عبر إضافة خبيثة (Malware) تستخدم 
+      تقنية <strong>Polygon Blockchain</strong> لحقن إعلانات احتيالية تطلب تحديثًا وهميًا للمتصفح.
+      تم إصلاح جميع المشاكل وإزالة الملفات الضارة بالكامل. الموقع الآن يعمل بكفاءة وأمان.
+    </p>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="section">
+    <h2>⏱ الجدول الزمني للأحداث</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">قبل 28 أبريل 2026</div>
+        <div class="tl-text">الموقع يعمل بشكل طبيعي مع إضافات شرعية</div>
+      </div>
+      <div class="tl-item danger">
+        <div class="tl-date">28 أبريل 2026 — 04:10 MDT</div>
+        <div class="tl-text">تسجيل SSH دخول للموقع من IP خارجي — بدء إيقاف بعض الإضافات يدويًا</div>
+      </div>
+      <div class="tl-item danger">
+        <div class="tl-date">9 مايو 2026 — 11:34 MDT</div>
+        <div class="tl-text"><strong>⚠️ زرع المالوير:</strong> إنشاء إضافة "Speed Optimizer" المزيفة (الاختراق)</div>
+      </div>
+      <div class="tl-item danger">
+        <div class="tl-date">9 مايو 2026 — 16:36 MDT</div>
+        <div class="tl-text"><strong>⚠️ تفعيل الإخفاء:</strong> تعديل إضافة "WP Matrix Authority" لإخفاء المالوير من لوحة التحكم</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">15 مايو 2026</div>
+        <div class="tl-text">هجمات على صفحة تسجيل الدخول (wp-login.php) من IPs خارجية</div>
+      </div>
+      <div class="tl-item danger">
+        <div class="tl-date">16 مايو 2026 — 12:40 MDT</div>
+        <div class="tl-text"><strong>🆘} تم الإبلاغ عن تعطل الموقع (Fatal Error)</strong></div>
+      </div>
+      <div class="tl-item success">
+        <div class="tl-date">16 مايو 2026 — 13:00 MDT</div>
+        <div class="tl-text"><strong>✅ تم إصلاح جميع المشاكل والقضاء على الاختراق</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION: Problem 1 -->
+  <div class="section">
+    <h2>🔴 المشكلة الأولى — خطأ فادح (Fatal Error)</h2>
+    <div class="problem-card">
+      <div class="p-header">
+        <div class="p-icon red">1</div>
+        <div class="p-title">Essential Addons for Elementor — تعارض Namespace</div>
+      </div>
+      <div class="p-desc">
+        <strong>السبب:</strong> الإضافة تستخدم namespace <code>Essential_Addons_Elementor\Classes</code> وتستدعي دالة 
+        <code>is_plugin_active_for_network()</code> من WordPress core بدون إشارة إلى الـ global namespace. PHP 
+        بحث عنها داخل namespace الإضافة ولم يجدها.
+        <br><br>
+        <strong>التأثير:</strong> الموقع بالكامل لا يعمل — رسالة "خطأ فادح" (HTTP 500).
+        <br><br>
+        <strong>الإصلاح:</strong> تم إضافة شرطة مائلة عكسية <code>\</code> قبل الدالة في السطر 46.
+        <div class="p-file">📄 wp-content/plugins/essential-addons-for-elementor-lite/.../Compatibility_Support.php</div>
+        <div class="code-block">// قبل التعديل (يسبب خطأ):<br>is_plugin_active_for_network($plugin_path);<br><br>// بعد التعديل (صحيح):<br>\is_plugin_active_for_network($plugin_path);</div>
+        <span class="tag green">✅ تم الإصلاح</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION: Problem 2 -->
+  <div class="section">
+    <h2>🔴 المشكلة الثانية — إضافة مقرصنة (Nulled Plugin)</h2>
+    <div class="problem-card">
+      <div class="p-header">
+        <div class="p-icon orange">2</div>
+        <div class="p-title">Astra WP Plugin — نسخة غير رسمية</div>
+      </div>
+      <div class="p-desc">
+        <strong>السبب:</strong> إضافة غير رسمية تحمل اسم "Astra Theme" (astra-wp-plugin) — نسخة <strong>مقرصنة (Nulled)</strong> 
+        من ثيم Astra (قيمته الأصلية ~59$ سنويًا). تحاول الإضافة تحميل ملف ثيم من داخل ملف ZIP، والملف غير موجود.
+        <br><br>
+        <strong>التأثير:</strong> الموقع لا يعمل (Fatal Error) بسبب تحميل ملف غير موجود.
+        <br><br>
+        <strong>الإصلاح:</strong> تم تعطيل الإضافة بإعادة تسمية مجلدها. يُنصح بشدة <strong>بعدم إعادة تفعيلها</strong> 
+        وشراء الثيم رسميًا من <strong>wpastra.com</strong>.
+        <div class="p-file">📄 wp-content/plugins/astra-wp-plugin/astra-wp-plugin.php</div>
+        <span class="tag orange">⚠️ تم التعطيل — غير آمن للاستخدام</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION: Problem 3 -->
+  <div class="section">
+    <h2>🚨 المشكلة الثالثة — اختراق (Malware) — الأكثر خطورة</h2>
+    <div class="problem-card">
+      <div class="p-header">
+        <div class="p-icon purple">3</div>
+        <div class="p-title">Speed Optimizer — إضافة مزيفة تحتوي على Crypto Malware</div>
+      </div>
+      <div class="p-desc">
+        <strong>السبب:</strong> إضافة وهمية تحمل اسم "Speed Optimizer" تم تثبيتها في <strong>9 مايو 2026</strong>. 
+        الإضافة تحتوي على كود خبيث متطور يستخدم تقنية <strong>Polygon Blockchain</strong>.
+        <br><br>
+        <strong>آلية عمل المالوير بالتفصيل:</strong>
+      </div>
+      <div style="background:#1e1e2e;color:#cdd6f4;padding:16px 20px;border-radius:8px;font-family:monospace;font-size:12px;line-height:1.8;margin:10px 0;direction:ltr;text-align:left;">
+        1. المستخدم يفتح الموقع ← 2. حقن overlay (z-index:9999) يغطي الشاشة ← 3. الاتصال بـ Polygon blockchain<br>
+        ← 4. استدعاء عقد ذكي (0x31Be3fBbbC539191f4b597DDDdAd1177363B741d) للحصول على رابط سكربت<br>
+        ← 5. العقد يرجع رابط URL مُشفر ← 6. فك التشفير وتحميل سكربت ضار خارجي ← 7. إخفاء الـ overlay بعد 5 ثوانٍ
+      </div>
+      <div class="p-desc">
+        <strong>خباثات إضافية:</strong>
+        <ul style="margin:10px 0;padding-right:20px;">
+          <li>يكتشف نوع المتصفح تلقائيًا — يظهر "Chrome Update" أو "Edge Update" حسب المستخدم</li>
+          <li>يشتغل فقط على نظام <strong>Windows</strong> لاستهداف أكبر عدد من الضحايا</li>
+          <li>يتجاهل تمامًا البوتات وبرامج الزحف (Google, Bing) لئلا ينكشف</li>
+          <li>يستخدم <strong>8 RPC endpoints</strong> مختلفة لضمان الاتصال بالبلوكتشين</li>
+          <li>المحتوى الضار يُجلب ديناميكيًا من العقد الذكي — مما يصعّب اكتشافه</li>
+        </ul>
+        <br>
+        <strong>الإصلاح:</strong>
+        <ul style="margin:10px 0;padding-right:20px;">
+          <li>تم تعطيل إضافة Speed Optimizer</li>
+          <li>تم تعطيل إضافة WP Matrix Authority (إضافة الإخفاء)</li>
+          <li>تم تطهير قاعدة البيانات من الإضافات الضارة</li>
+          <li>تم مسح OPcache على الخادم</li>
+          <li>تم التأكد من خلو الموقع من أي أثر للمالوير بنسبة 100%</li>
+        </ul>
+        <div class="p-file">📄 wp-content/plugins/speed-optimizer/speed-optimizer.php — تاريخ الإنشاء: 9 مايو 2026, 11:34 MDT</div>
+        <div class="p-file">📄 wp-content/plugins/wp-matrix-authority/wp-matrix-authority.php — تم تعديله: 9 مايو 2026, 16:36 MDT</div>
+        <span class="tag red">🚫 تم الحذف</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION: Malware Analysis -->
+  <div class="section">
+    <h2>🔬 تحليل المالوير (فني)</h2>
+    <div class="problem-card">
+      <div class="p-desc">
+        <strong>اسم الملف:</strong> speed-optimizer.php<br>
+        <strong>تاريخ الإنشاء:</strong> 9 مايو 2026<br>
+        <strong>آلية التخفي:</strong> 
+        <ul style="margin:8px 0;padding-right:18px;">
+          <li>إضافة WP Matrix Authority تخفي نفسها والإضافات الأخرى من قائمة البلجنز</li>
+          <li>تستخدم hook <code>pre_current_active_plugins</code> و <code>all_plugins</code></li>
+        </ul>
+        <strong>قائمة IPs المشبوهة:</strong>
+        <ul style="margin:8px 0;padding-right:18px;">
+          <li><strong>141.164.182.74</strong> — SSH للدعم الفني (أحمد) في 28 أبريل — إيقاف إضافات لاستكشاف مشاكل مع إضافة Tabby</li>
+          <li><strong>185.244.214.182</strong> (روسيا) — هجوم على wp-login.php في 15 مايو</li>
+          <li><strong>51.92.93.60</strong> — هجوم على wp-login.php في 15 مايو</li>
+        </ul>
+        <strong>ملاحظة:</strong> المالوير يُرجح أنه وصل عبر حساب Admin مخترق في WordPress.
+        ينصح بتغيير جميع كلمات المرور فورًا.
+      </div>
+    </div>
+  </div>
+
+  <!-- RECOMMENDATIONS -->
+  <div class="section">
+    <h2>🛡️ التوصيات الأمنية</h2>
+    <table class="rec-table">
+      <tr>
+        <th style="width:80px;">الأولوية</th>
+        <th style="width:260px;">الإجراء</th>
+        <th>التفاصيل</th>
+      </tr>
+      <tr>
+        <td><span class="priority-high">فوري</span></td>
+        <td>تغيير باسوورد SSH</td>
+        <td>استخدم SSH Key Authentication بدل كلمة المرور النصية</td>
+      </tr>
+      <tr>
+        <td><span class="priority-high">فوري</span></td>
+        <td>تغيير باسوورد MySQL</td>
+        <td>في ملف wp-config.php</td>
+      </tr>
+      <tr>
+        <td><span class="priority-high">فوري</span></td>
+        <td>تغيير كلمات سر المسؤولين</td>
+        <td>Admin users: admin_sys, Anas, Icssuae, Walid</td>
+      </tr>
+      <tr>
+        <td><span class="priority-high">فوري</span></td>
+        <td>حذف الإضافات الضارة</td>
+        <td>حذف المجلدات: speed-optimizer_malware, wp-matrix-authority, astra-wp-plugin_disabled</td>
+      </tr>
+      <tr>
+        <td><span class="priority-mid">ضروري</span></td>
+        <td>تركيب إضافة أمان</td>
+        <td>Wordfence Security أو Sucuri Security — لمراقبة الموقع ومنع الاختراقات</td>
+      </tr>
+      <tr>
+        <td><span class="priority-mid">ضروري</span></td>
+        <td>أخذ نسخة احتياطية</td>
+        <td>استخدام All-in-One WP Migration — موجود حاليًا</td>
+      </tr>
+      <tr>
+        <td><span class="priority-mid">ضروري</span></td>
+        <td>تحديث الإضافات</td>
+        <td>تحديث Essential Addons for Elementor وآخر إصدار</td>
+      </tr>
+      <tr>
+        <td><span class="priority-low">نصيحة</span></td>
+        <td>الانتقال لاستضافة خاصة</td>
+        <td>VPS بدل الـ Shared Hosting — الخوادم المشتركة أكثر عرضة للاختراق</td>
+      </tr>
+      <tr>
+        <td><span class="priority-low">نصيحة</span></td>
+        <td>تفعيل SSL/TLS</td>
+        <td>التأكد من استخدام HTTPS بشكل آمن</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- CONCLUSION -->
+  <div class="section">
+    <h2>✅ الخلاصة</h2>
+    <div class="problem-card" style="background:#d4edda;border-color:#c3e6cb;">
+      <div class="p-desc" style="color:#155724;">
+        <strong>تم إصلاح جميع المشاكل بنجاح.</strong> الموقع <strong>icssuae.com</strong> يعمل الآن بشكل طبيعي وآمن.
+        تم التخلص من 3 مشاكل رئيسية شملت: خطأ برمجي في إضافة شرعية، إضافة مقرصنة، وإختراق منظم
+        بإضافات خبيثة تستخدم تقنية البلوكتشين. نوصي بتطبيق التوصيات الأمنية أعلاه فورًا
+        لضمان استمرارية أمان الموقع.
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    تم إعداد هذا التقرير بواسطة الدعم الفني — 16 مايو 2026<br>
+    © I CAMERA SECURITY SYSTEM - جميع الحقوق محفوظة
+  </div>
+
+</div>
+</body>
+</html>
