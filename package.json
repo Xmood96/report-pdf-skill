@@ -1,0 +1,13 @@
+{
+  "name": "report-pdf-skill",
+  "version": "2.0.0",
+  "description": "مهارة تقارير PDF فنية — Technical report PDF generator. Generic, data-driven, supports any PDF report.",
+  "private": true,
+  "scripts": {
+    "generate": "node generate-pdf.js",
+    "generate:demo": "node generate-pdf.js --data sample-data.json --output ./output/report.pdf"
+  },
+  "dependencies": {
+    "puppeteer": "^24.0.0"
+  }
+}

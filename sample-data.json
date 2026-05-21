@@ -1,0 +1,145 @@
+{
+  "lang": "ar",
+  "dir": "rtl",
+  "title": "تقرير فني شامل",
+  "subtitle": "تحليل وتشخيص وإصلاح الأعطال والاختراق",
+  "badge": {
+    "text": "✅ تم الإصلاح — 16 مايو 2026",
+    "color": "#27ae60"
+  },
+  "meta": [
+    { "label": "اسم العميل", "value": "I CAMERA SECURITY SYSTEMS" },
+    { "label": "الموقع", "value": "icssuae.com" },
+    { "label": "نظام الإدارة", "value": "WordPress 6.9.4" },
+    { "label": "الاستضافة", "value": "Shared Hosting (cPanel / LiteSpeed)" },
+    { "label": "التاريخ", "value": "16 مايو 2026" },
+    { "label": "تاريخ بدء المشاكل", "value": "28 أبريل 2026 — 9 مايو 2026 (فترة الاختراق)" },
+    { "label": "حالة الموقع", "value": "✅ شغال ونظيف", "tag": "green" }
+  ],
+  "executiveSummary": "تم اكتشاف <strong>3 مشاكل رئيسية</strong> في موقع العميل: <strong>خطأ برمجي</strong> في إضافة Essential Addons for Elementor، إضافة <strong>مقرصنة (Nulled)</strong> من ثيم Astra، و<strong>اختراق متطور</strong> عبر إضافة خبيثة (Malware) تستخدم تقنية <strong>Polygon Blockchain</strong> لحقن إعلانات احتيالية تطلب تحديثًا وهميًا للمتصفح. تم إصلاح جميع المشاكل وإزالة الملفات الضارة بالكامل. الموقع الآن يعمل بكفاءة وأمان.",
+  "sections": [
+    {
+      "type": "timeline",
+      "title": "⏱ الجدول الزمني للأحداث",
+      "items": [
+        { "date": "قبل 28 أبريل 2026", "text": "الموقع يعمل بشكل طبيعي مع إضافات شرعية", "class": "" },
+        { "date": "28 أبريل 2026 — 04:10 MDT", "text": "العميل أبلغ عن تعطل الموقع — تم تعطيل إضافة Tabby وعاد الموقع للعمل", "class": "" },
+        { "date": "9 مايو 2026 — 11:34 MDT", "text": "<strong>⚠️ زرع المالوير:</strong> إنشاء إضافة \"Speed Optimizer\" المزيفة", "class": "danger" },
+        { "date": "9 مايو 2026 — 16:36 MDT", "text": "<strong>⚠️ تفعيل الإخفاء:</strong> تعديل إضافة \"WP Matrix Authority\" لإخفاء المالوير", "class": "danger" },
+        { "date": "15 مايو 2026", "text": "هجمات على صفحة تسجيل الدخول (wp-login.php) من IPs خارجية", "class": "" },
+        { "date": "16 مايو 2026 — 12:40 MDT", "text": "<strong>🆘 تم الإبلاغ عن تعطل الموقع (Fatal Error)</strong>", "class": "danger" },
+        { "date": "16 مايو 2026 — 13:00 MDT", "text": "<strong>✅ تم إصلاح الأعطال وإزالة المالوير</strong>", "class": "success" },
+        { "date": "16 مايو 2026 — 15:36 MDT", "text": "<strong>✅ تنفيذ جميع الإجراءات الأمنية:</strong> حذف المستخدمين غير المرغوب فيهم، تغيير كلمات المرور، تثبيت Wordfence، نسخة احتياطية", "class": "success" }
+      ]
+    },
+    {
+      "type": "problems",
+      "title": "المشاكل المكتشفة",
+      "problems": [
+        {
+          "iconColor": "red",
+          "number": 1,
+          "title": "Essential Addons for Elementor — تعارض Namespace",
+          "description": "<strong>السبب:</strong> الإضافة تستخدم namespace وتستدعي دالة <code>is_plugin_active_for_network()</code> من WordPress core بدون إشارة إلى الـ global namespace.<br><br><strong>التأثير:</strong> الموقع بالكامل لا يعمل — رسالة خطأ فادح (HTTP 500).<br><br><strong>الإصلاح:</strong> تم إضافة شرطة مائلة عكسية <code>\\</code> قبل الدالة.",
+          "files": ["wp-content/plugins/essential-addons-for-elementor-lite/.../Compatibility_Support.php"],
+          "codeBlocks": [
+            { "label": "قبل التعديل (يسبب خطأ):", "code": "is_plugin_active_for_network($plugin_path);" },
+            { "label": "بعد التعديل (صحيح):", "code": "\\is_plugin_active_for_network($plugin_path);" }
+          ],
+          "tags": [{ "text": "✅ تم الإصلاح", "color": "green" }]
+        },
+        {
+          "iconColor": "orange",
+          "number": 2,
+          "title": "Astra WP Plugin — نسخة غير رسمية",
+          "description": "<strong>السبب:</strong> إضافة غير رسمية تحمل اسم \"Astra Theme\" — نسخة <strong>مقرصنة (Nulled)</strong> من ثيم Astra.<br><br><strong>التأثير:</strong> الموقع لا يعمل (Fatal Error) بسبب تحميل ملف غير موجود.<br><br><strong>الإصلاح:</strong> تم تعطيل الإضافة بإعادة تسمية مجلدها. يُنصح بشدة <strong>بعدم إعادة تفعيلها</strong> وشراء الثيم رسميًا.",
+          "files": ["wp-content/plugins/astra-wp-plugin/astra-wp-plugin.php"],
+          "tags": [{ "text": "⚠️ تم التعطيل — غير آمن للاستخدام", "color": "orange" }]
+        },
+        {
+          "iconColor": "purple",
+          "number": 3,
+          "title": "Speed Optimizer — إضافة مزيفة تحتوي على Crypto Malware",
+          "description": "<strong>السبب:</strong> إضافة وهمية تم تثبيتها في 9 مايو 2026 تحتوي على كود خبيث متطور يستخدم تقنية <strong>Polygon Blockchain</strong>.",
+          "files": [
+            "wp-content/plugins/speed-optimizer/speed-optimizer.php",
+            "wp-content/plugins/wp-matrix-authority/wp-matrix-authority.php"
+          ],
+          "codeBlocks": [
+            { "label": "آلية عمل المالوير:", "code": "1. المستخدم يفتح الموقع\n2. حقن overlay (z-index:9999) يغطي الشاشة\n3. الاتصال بـ Polygon blockchain\n4. استدعاء عقد ذكي للحصول على رابط سكربت\n5. العقد يرجع رابط URL مُشفر\n6. فك التشفير وتحميل سكربت ضار خارجي\n7. إخفاء الـ overlay بعد 5 ثوانٍ" }
+          ],
+          "tags": [{ "text": "🚫 تم الحذف", "color": "red" }],
+          "details": "<strong>خباثات إضافية:</strong><ul><li>يكتشف نوع المتصفح تلقائيًا</li><li>يشتغل فقط على Windows</li><li>يتجاهل البوتات وبرامج الزحف</li><li>يستخدم 8 RPC endpoints مختلفة</li></ul>"
+        }
+      ]
+    },
+    {
+      "type": "malware_analysis",
+      "title": "🔬 تحليل المالوير (فني)",
+      "items": [
+        { "label": "اسم الملف", "value": "speed-optimizer.php" },
+        { "label": "تاريخ الإنشاء", "value": "9 مايو 2026" }
+      ],
+      "details": "<strong>آلية التخفي:</strong><ul><li>إضافة WP Matrix Authority تخفي نفسها والإضافات الأخرى من قائمة البلجنز</li><li>تستخدم hook <code>pre_current_active_plugins</code> و <code>all_plugins</code></li></ul><strong>قائمة IPs المشبوهة:</strong><ul><li><strong>141.164.182.74</strong> — SSH للدعم الفني</li><li><strong>185.244.214.182</strong> (روسيا) — هجوم على wp-login.php</li><li><strong>51.92.93.60</strong> — هجوم على wp-login.php</li></ul>"
+    },
+    {
+      "type": "actions_table",
+      "title": "✅ الإجراءات الأمنية المُنفَّذة",
+      "subsections": [
+        {
+          "heading": "👤 إدارة المستخدمين",
+          "type": "key_value_table",
+          "headers": ["الإجراء", "قبل", "بعد"],
+          "rows": [
+            ["المستخدمون المسؤولون", "Walid, Anas, admin_sys, Icssuae", "<strong>Icssuae فقط</strong>"],
+            ["بريد Icssuae", "info@icssuae.com", "<strong>mostafa@icssuae.com</strong>"],
+            ["كلمة سر Icssuae", "قديمة", "<strong>تم التغيير</strong>"]
+          ]
+        },
+        {
+          "heading": "🗑️ الإضافات الضارة — حذف نهائي",
+          "type": "key_value_table",
+          "headers": ["الإضافة", "الخطر", "الإجراء"],
+          "rows": [
+            ["Speed Optimizer", "🚨 مالوير كريبتو", "🗑️ حذف + تعطيل من DB"],
+            ["WP Matrix Authority", "🕵️ إخفاء البلجنز", "🗑️ حذف + تعطيل من DB"],
+            ["Astra WP Plugin", "⚠️ مقرصنة (Nulled)", "🗑️ حذف"]
+          ]
+        },
+        {
+          "heading": "🔄 تحديث جميع الإضافات",
+          "type": "key_value_table",
+          "headers": ["الإضافة", "الإصدار القديم", "الإصدار الجديد"],
+          "rows": [
+            ["Essential Addons", "6.2.3", "6.6.4"],
+            ["Elementor", "3.23.4", "4.0.8"],
+            ["WooCommerce", "8.2.4", "10.7.0"],
+            ["و 8 إضافات أخرى", "—", "✅ محدثة"]
+          ]
+        }
+      ]
+    },
+    {
+      "type": "summary_boxes",
+      "title": "📊 ملخص الإنجاز",
+      "boxes": [
+        { "value": "3", "label": "مشاكل تم حلها", "color": "#d4edda", "textColor": "#155724" },
+        { "value": "11", "label": "إضافة محدثة", "color": "#fff3cd", "textColor": "#856404" },
+        { "value": "3", "label": "إضافات ضارة حذفت", "color": "#f8d7da", "textColor": "#721c24" },
+        { "value": "3", "label": "مستخدمين محذوفين", "color": "#d1ecf1", "textColor": "#0c5460" },
+        { "value": "1", "label": "إضافة أمان مثبتة", "color": "#e8d5f5", "textColor": "#5b2c8c" }
+      ]
+    },
+    {
+      "type": "conclusion",
+      "title": "✅ الخلاصة النهائية",
+      "text": "<strong>تم إصلاح جميع المشاكل وتأمين الموقع بالكامل.</strong><br><br><strong>الموقع:</strong> icssuae.com — <strong>الحالة:</strong> 🟢 شغال وآمن",
+      "items": [
+        "🔴 خطأ برمجي في Essential Addons — تم إصلاح الـ namespace",
+        "🔴 إضافة مقرصنة (Nulled) Astra — تم الحذف",
+        "🚨 اختراق Crypto Malware (Polygon Blockchain) — تم الحذف والتأمين"
+      ],
+      "footer": "تم إعداد هذا التقرير بواسطة الدعم الفني — 16 مايو 2026<br>© I CAMERA SECURITY SYSTEM - جميع الحقوق محفوظة"
+    }
+  ]
+}
