@@ -1,0 +1,360 @@
+{
+  "lang": "ar",
+  "dir": "rtl",
+  "title": "📋 تقرير فني شامل — ICSS UAE",
+  "subtitle": "تحليل وتشخيص وإصلاح الأعطال والاختراق + دليل الصلاحيات والتحكم في المستخدمين",
+  "badge": {
+    "text": "✅ تم الإصلاح — 16 مايو 2026",
+    "color": "#27ae60"
+  },
+  "meta": [
+    {
+      "label": "اسم العميل",
+      "value": "I CAMERA SECURITY SYSTEMS"
+    },
+    {
+      "label": "الموقع",
+      "value": "icssuae.com"
+    },
+    {
+      "label": "نظام الإدارة",
+      "value": "WordPress 6.9.4"
+    },
+    {
+      "label": "الاستضافة",
+      "value": "Shared Hosting (cPanel / LiteSpeed)"
+    },
+    {
+      "label": "التاريخ",
+      "value": "16 مايو 2026"
+    },
+    {
+      "label": "آخر تحديث للتقرير",
+      "value": "21 مايو 2026"
+    },
+    {
+      "label": "تاريخ بدء المشاكل",
+      "value": "28 أبريل 2026 — 9 مايو 2026 (فترة الاختراق)"
+    },
+    {
+      "label": "حالة الموقع",
+      "value": "✅ شغال ونظيف — جميع الإجراءات الأمنية مُطبَّقة",
+      "tag": "green"
+    }
+  ],
+  "executiveSummary": "تم اكتشاف <strong>3 مشاكل رئيسية</strong> في موقع العميل: <strong>خطأ برمجي</strong> في إضافة Essential Addons for Elementor، إضافة <strong>مقرصنة (Nulled)</strong> من ثيم Astra، و<strong>اختراق متطور</strong> عبر إضافة خبيثة (Malware) تستخدم تقنية <strong>Polygon Blockchain</strong> لحقن إعلانات احتيالية.<br><br>بالإضافة إلى ذلك، تم إجراء <strong>تدقيق شامل للمستخدمين والصلاحيات</strong> — تحديد صلاحيات كل مستخدم، تنظيف الحسابات المخترقة، وتقديم دليل كامل لكيفية إدارة الأدوار والتحكم بالوصول.<br><br>الموقع الآن يعمل بكفاءة وأمان عالي.",
+  "sections": [
+    {
+      "type": "timeline",
+      "title": "⏱ الجدول الزمني للأحداث",
+      "items": [
+        {
+          "date": "قبل 28 أبريل 2026",
+          "text": "الموقع يعمل بشكل طبيعي مع إضافات شرعية",
+          "class": ""
+        },
+        {
+          "date": "28 أبريل 2026 — 04:10 MDT",
+          "text": "العميل أبلغ عن تعطل الموقع — تم تعطيل إضافة Tabby وعاد الموقع للعمل",
+          "class": ""
+        },
+        {
+          "date": "9 مايو 2026 — 11:34 MDT",
+          "text": "<strong>⚠️ زرع المالوير:</strong> إنشاء إضافة \"Speed Optimizer\" المزيفة",
+          "class": "danger"
+        },
+        {
+          "date": "9 مايو 2026 — 16:36 MDT",
+          "text": "<strong>⚠️ تفعيل الإخفاء:</strong> تعديل إضافة \"WP Matrix Authority\" لإخفاء المالوير",
+          "class": "danger"
+        },
+        {
+          "date": "15 مايو 2026",
+          "text": "هجمات على صفحة تسجيل الدخول (wp-login.php) من IPs خارجية",
+          "class": ""
+        },
+        {
+          "date": "16 مايو 2026 — 12:40 MDT",
+          "text": "<strong>🆘 تم الإبلاغ عن تعطل الموقع (Fatal Error)</strong>",
+          "class": "danger"
+        },
+        {
+          "date": "16 مايو 2026 — 13:00 MDT",
+          "text": "<strong>✅ تم إصلاح الأعطال وإزالة المالوير</strong>",
+          "class": "success"
+        },
+        {
+          "date": "16 مايو 2026 — 15:36 MDT",
+          "text": "<strong>✅ تنفيذ جميع الإجراءات الأمنية:</strong> حذف المستخدمين غير المرغوب فيهم، تغيير كلمات المرور، تثبيت Wordfence، نسخة احتياطية",
+          "class": "success"
+        },
+        {
+          "date": "21 مايو 2026",
+          "text": "<strong>📋 إضافة تدقيق الصلاحيات والأدوار — تحليل كامل لكل مستخدم</strong>",
+          "class": "success"
+        }
+      ]
+    },
+    {
+      "type": "problems",
+      "title": "🔴 المشاكل المكتشفة",
+      "problems": [
+        {
+          "iconColor": "red",
+          "number": 1,
+          "title": "Essential Addons for Elementor — تعارض Namespace",
+          "description": "<strong>السبب:</strong> الإضافة تستخدم namespace وتستدعي دالة <code>is_plugin_active_for_network()</code> من WordPress core بدون إشارة إلى الـ global namespace. PHP بحث عنها داخل namespace الإضافة ولم يجدها.<br><br><strong>التأثير:</strong> الموقع بالكامل لا يعمل — رسالة خطأ فادح (HTTP 500).<br><br><strong>الإصلاح:</strong> تم إضافة شرطة مائلة عكسية <code>\\</code> قبل الدالة في السطر 46.",
+          "files": [
+            "wp-content/plugins/essential-addons-for-elementor-lite/.../Compatibility_Support.php"
+          ],
+          "codeBlocks": [
+            {
+              "label": "قبل التعديل (يسبب خطأ):",
+              "code": "is_plugin_active_for_network();"
+            },
+            {
+              "label": "بعد التعديل (صحيح):",
+              "code": "\\is_plugin_active_for_network();"
+            }
+          ],
+          "tags": [
+            {
+              "text": "✅ تم الإصلاح",
+              "color": "green"
+            }
+          ]
+        },
+        {
+          "iconColor": "orange",
+          "number": 2,
+          "title": "Astra WP Plugin — نسخة غير رسمية (Nulled)",
+          "description": "<strong>السبب:</strong> إضافة غير رسمية تحمل اسم \"Astra Theme\" (astra-wp-plugin) — نسخة <strong>مقرصنة (Nulled)</strong> من ثيم Astra (قيمته ~59$ سنويًا). تحاول الإضافة تحميل ملف ثيم من داخل ملف ZIP والملف غير موجود.<br><br><strong>التأثير:</strong> الموقع لا يعمل (Fatal Error) بسبب تحميل ملف غير موجود.<br><br><strong>الإصلاح:</strong> تم تعطيل الإضافة بإعادة تسمية مجلدها. يُنصح بشدة <strong>بعدم إعادة تفعيلها</strong> وشراء الثيم رسميًا من <strong>wpastra.com</strong>.",
+          "files": [
+            "wp-content/plugins/astra-wp-plugin/astra-wp-plugin.php"
+          ],
+          "tags": [
+            {
+              "text": "⚠️ تم التعطيل — غير آمن للاستخدام",
+              "color": "orange"
+            }
+          ]
+        },
+        {
+          "iconColor": "purple",
+          "number": 3,
+          "title": "Speed Optimizer — إضافة مزيفة تحتوي على Crypto Malware",
+          "description": "<strong>السبب:</strong> إضافة وهمية تحمل اسم \"Speed Optimizer\" تم تثبيتها في <strong>9 مايو 2026</strong>. الإضافة تحتوي على كود خبيث متطور يستخدم تقنية <strong>Polygon Blockchain</strong>.",
+          "files": [
+            "wp-content/plugins/speed-optimizer/speed-optimizer.php",
+            "wp-content/plugins/wp-matrix-authority/wp-matrix-authority.php"
+          ],
+          "codeBlocks": [
+            {
+              "label": "آلية عمل المالوير بالتفصيل:",
+              "code": "1. المستخدم يفتح الموقع\n2. حقن overlay (z-index:9999) يغطي الشاشة\n3. الاتصال بـ Polygon blockchain\n4. استدعاء عقد ذكي للحصول على رابط سكربت\n5. العقد يرجع رابط URL مُشفر\n6. فك التشفير وتحميل سكربت ضار خارجي\n7. إخفاء الـ overlay بعد 5 ثوانٍ"
+            }
+          ],
+          "tags": [
+            {
+              "text": "🚫 تم الحذف",
+              "color": "red"
+            }
+          ],
+          "details": "<strong>خباثات إضافية:</strong><ul><li>يكتشف نوع المتصفح تلقائيًا — يظهر \"Chrome Update\" أو \"Edge Update\"</li><li>يشتغل فقط على نظام <strong>Windows</strong> لاستهداف أكبر عدد من الضحايا</li><li>يتجاهل تمامًا البوتات وبرامج الزحف (Google, Bing) لئلا ينكشف</li><li>يستخدم <strong>8 RPC endpoints</strong> مختلفة لضمان الاتصال بالبلوكتشين</li><li>المحتوى الضار يُجلب دינאמيكيًا من العقد الذكي — مما يصعّب اكتشافه</li></ul>"
+        }
+      ]
+    },
+    {
+      "type": "malware_analysis",
+      "title": "🔬 تحليل المالوير (فني)",
+      "items": [
+        {
+          "label": "اسم الملف",
+          "value": "speed-optimizer.php"
+        },
+        {
+          "label": "تاريخ الإنشاء",
+          "value": "9 مايو 2026 — 11:34 MDT"
+        },
+        {
+          "label": "آلية التخفي",
+          "value": "WP Matrix Authority — hooks: pre_current_active_plugins, all_plugins"
+        },
+        {
+          "label": "طريقة الدخول",
+          "value": "يُرجح عبر حساب Admin مخترق"
+        }
+      ],
+      "details": "<strong>قائمة IPs المشبوهة:</strong><ul><li><strong>141.164.182.74</strong> — SSH للدعم الفني — دخول في 28 أبريل لتعطيل إضافة Tabby بناءً على بلاغ العميل</li><li><strong>185.244.214.182</strong> (روسيا) — هجوم على wp-login.php في 15 مايو</li><li><strong>51.92.93.60</strong> — هجوم على wp-login.php في 15 مايو</li></ul>"
+    },
+    {
+      "type": "actions_table",
+      "title": "✅ الإجراءات الأمنية المُنفَّذة",
+      "subsections": [
+        {
+          "heading": "👤 إدارة المستخدمين",
+          "type": "key_value_table",
+          "headers": [
+            "الإجراء",
+            "قبل",
+            "بعد"
+          ],
+          "rows": [
+            [
+              "المستخدمون المسؤولون",
+              "Walid, Anas, admin_sys, Icssuae",
+              "<strong>Icssuae فقط</strong>"
+            ],
+            [
+              "بريد Icssuae",
+              "info@icssuae.com",
+              "<strong>mostafa@icssuae.com</strong>"
+            ],
+            [
+              "كلمة سر Icssuae",
+              "قديمة",
+              "<strong>تم التغيير — قوية وآمنة</strong>"
+            ],
+            [
+              "مستخدمون محذوفون",
+              "Walid, Anas, admin_sys",
+              "<strong>تم الحذف النهائي</strong>"
+            ]
+          ]
+        },
+        {
+          "heading": "🗑️ الإضافات الضارة — حذف نهائي",
+          "type": "key_value_table",
+          "headers": [
+            "الإضافة",
+            "الخطر",
+            "الإجراء"
+          ],
+          "rows": [
+            [
+              "Speed Optimizer",
+              "🚨 مالوير كريبتو (Polygon)",
+              "🗑️ حذف + تعطيل من DB"
+            ],
+            [
+              "WP Matrix Authority",
+              "🕵️ إخفاء البلجنز",
+              "🗑️ حذف + تعطيل من DB"
+            ],
+            [
+              "Astra WP Plugin",
+              "⚠️ مقرصنة (Nulled)",
+              "🗑️ حذف"
+            ]
+          ]
+        },
+        {
+          "heading": "🔄 تحديث جميع الإضافات",
+          "type": "key_value_table",
+          "headers": [
+            "الإضافة",
+            "الإصدار القديم",
+            "الإصدار الجديد"
+          ],
+          "rows": [
+            [
+              "Essential Addons",
+              "6.2.3",
+              "6.6.4"
+            ],
+            [
+              "Elementor",
+              "3.23.4",
+              "4.0.8"
+            ],
+            [
+              "WooCommerce",
+              "8.2.4",
+              "10.7.0"
+            ],
+            [
+              "و 8 إضافات أخرى",
+              "—",
+              "✅ محدثة"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "type": "custom",
+      "title": "🔐 تحليل صلاحيات المستخدمين (User Roles & Capabilities)",
+      "body": "<div class=\"problem-card\"><div class=\"p-desc\"><p style=\"font-size:14px;line-height:1.8;\">تم إجراء <strong>تدقيق كامل</strong> على جميع حسابات المستخدمين في نظام WordPress لموقع ICSS UAE. الهدف: تحديد مستوى الصلاحيات لكل مستخدم، وتقييم المخاطر الأمنية، وضمان تطبيق <strong>مبدأ أقل الصلاحيات (Least Privilege Principle)</strong>.</p></div></div><h3 style=\"color:#1a1a2e;font-size:18px;margin:25px 0 15px;\">📊 جدول المستخدمين — قبل وبعد التنظيف</h3><table style=\"width:100%;border-collapse:collapse;font-size:13px;margin:15px 0;\"><tr style=\"background:#1a1a2e;color:#fff;\"><th style=\"padding:8px 10px;text-align:right;\">المستخدم</th><th style=\"padding:8px 10px;text-align:right;\">الدور (Role)</th><th style=\"padding:8px 10px;text-align:right;\">الصلاحيات الفعلية</th><th style=\"padding:8px 10px;text-align:right;\">الحالة</th></tr><tr style=\"background:#f8d7da;\"><td style=\"padding:8px 10px;border-bottom:1px solid #e8e8e8;\"><strong>Walid</strong></td><td style=\"padding:8px 10px;border-bottom:1px solid #e8e8e8;\">Administrator</td><td style=\"padding:8px 10px;border-bottom:1px solid #e8e8e8;\">صلاحية كاملة — يستطيع تعديل/حذف أي شيء، تثبيت إضافات، تغيير الملفات</td><td style=\"padding:8px 10px;border-bottom:1px solid #e8e8e8;\"><span class=\"tag red\">🚫 حذف</span></td></tr><tr style=\"background:#f8d7da;\"><td style=\"padding:8px 10px;border-bottom:1px solid #e8e8e8;\"><strong>Anas</strong></td><td style=\"padding:8px 10px;border-bottom:1px solid #e8e8e8;\">Administrator</td><td style=\"padding:8px 10px;border-bottom:1px solid #e8e8e8;\">صلاحية كاملة — غير معروف إذا كان الحساب لا يزال نشطًا أو مخترقًا</td><td style=\"padding:8px 10px;border-bottom:1px solid #e8e8e8;\"><span class=\"tag red\">🚫 حذف</span></td></tr><tr style=\"background:#f8d7da;\"><td style=\"padding:8px 10px;border-bottom:1px solid #e8e8e8;\"><strong>admin_sys</strong></td><td style=\"padding:8px 10px;border-bottom:1px solid #e8e8e8;\">Administrator</td><td style=\"padding:8px 10px;border-bottom:1px solid #e8e8e8;\">صلاحية كاملة — حساب مشبوه، يُرجح أنه أنشئ بواسطة المالوير</td><td style=\"padding:8px 10px;border-bottom:1px solid #e8e8e8;\"><span class=\"tag red\">🚫 حذف</span></td></tr><tr style=\"background:#d4edda;\"><td style=\"padding:8px 10px;border-bottom:1px solid #e8e8e8;\"><strong>Icssuae</strong></td><td style=\"padding:8px 10px;border-bottom:1px solid #e8e8e8;\">Administrator</td><td style=\"padding:8px 10px;border-bottom:1px solid #e8e8e8;\">صلاحية كاملة — الحساب الأساسي والوحيد (بريد: mostafa@icssuae.com)</td><td style=\"padding:8px 10px;border-bottom:1px solid #e8e8e8;\"><span class=\"tag green\">✅ باقٍ</span></td></tr></table>"
+    },
+    {
+      "type": "custom",
+      "title": "🎯 أدوار WordPress الافتراضية — شرح تفصيلي",
+      "body": "<div class=\"problem-card\"><div class=\"p-desc\"><p style=\"font-size:14px;line-height:1.8;\">WordPress يوفر <strong>6 أدوار افتراضية</strong> (Roles)، لكل دور مجموعة صلاحيات (Capabilities). فهم هذه الأدوار ضروري لتعيين الصلاحيات الصحيحة لكل مستخدم.</p></div></div><div style=\"margin:20px 0;\"><div class=\"problem-card\" style=\"border-right:4px solid #e94560;\"><div class=\"p-header\"><div class=\"p-icon red\">S</div><div class=\"p-title\">Super Admin (مشرف عام)</div></div><div class=\"p-desc\"><strong>الصلاحيات:</strong> التحكم الكامل في الموقع — إدارة الشبكة (multisite)، تثبيت أي شيء، الوصول لكل الملفات.<br><strong>الاستخدام:</strong> فقط في مواقع WordPress Multisite.<br><strong>في موقع ICSS UAE:</strong> غير مستخدم (الموقع ليس Multisite).</div></div><div class=\"problem-card\" style=\"border-right:4px solid #e94560;\"><div class=\"p-header\"><div class=\"p-icon red\">A</div><div class=\"p-title\">Administrator (مسؤول)</div></div><div class=\"p-desc\"><strong>الصلاحيات:</strong><ul><li>➕ تثبيت/حذف الإضافات والثيمات</li><li>👥 إضافة/حذف/تعديل المستخدمين</li><li>⚙️ تغيير إعدادات الموقع</li><li>📝 تعديل أي محتوى</li><li>💻 الوصول لتحرير الملفات</li><li>🔧 تحديث النظام الأساسي</li></ul><strong>في موقع ICSS UAE:</strong> حساب <strong>Icssuae</strong> هو الوحيد المتبقي بهذا الدور. <span style=\"color:#e94560;\"><strong>⚠️ حساسية عالية — يجب حماية هذا الحساب بأقصى درجة.</strong></span></div></div><div class=\"problem-card\" style=\"border-right:4px solid #f39c12;\"><div class=\"p-header\"><div class=\"p-icon orange\">E</div><div class=\"p-title\">Editor (محرر)</div></div><div class=\"p-desc\"><strong>الصلاحيات:</strong><ul><li>✍️ إضافة/تعديل/حذف أي محتوى</li><li>📂 رفع الملفات والوسائط</li><li>📑 إدارة التصنيفات والوسوم</li></ul><strong>لا يستطيع:</strong> تغيير الإعدادات، تثبيت إضافات، إدارة المستخدمين، تعديل الملفات.<br><strong>الاستخدام الموصى به:</strong> للموظفين المسؤولين عن المحتوى فقط.</div></div><div class=\"problem-card\" style=\"border-right:4px solid #f39c12;\"><div class=\"p-header\"><div class=\"p-icon orange\">W</div><div class=\"p-title\">Author (كاتب)</div></div><div class=\"p-desc\"><strong>الصلاحيات:</strong><ul><li>✏️ كتابة ونشر المقالات الخاصة به فقط</li><li>📂 رفع الملفات</li><li>🔄 تعديل/حذف مقالاته</li></ul><strong>لا يستطيع:</strong> تعديل مقالات الآخرين، تغيير الإعدادات.<br><strong>الاستخدام الموصى به:</strong> للكتّاب والمحتوى الفردي.</div></div><div class=\"problem-card\" style=\"border-right:4px solid #9b59b6;\"><div class=\"p-header\"><div class=\"p-icon purple\">C</div><div class=\"p-title\">Contributor (مساهم)</div></div><div class=\"p-desc\"><strong>الصلاحيات:</strong><ul><li>✏️ كتابة مقالات جديدة ولكن <strong>لا يستطيع نشرها</strong></li><li>🔄 تعديل/حذف مقالاته <strong>قبل النشر فقط</strong></li></ul><strong>لا يستطيع:</strong> رفع الملفات، تعديل أي شيء بعد النشر.<br><strong>الاستخدام الموصى به:</strong> للمستخدمين الخارجيين أو المتعاونين المؤقتين.</div></div><div class=\"problem-card\" style=\"border-right:4px solid #27ae60;\"><div class=\"p-header\"><div class=\"p-icon green\">S</div><div class=\"p-title\">Subscriber (مشترك)</div></div><div class=\"p-desc\"><strong>الصلاحيات:</strong> قراءة المحتوى فقط، تعديل ملفه الشخصي.<br><strong>لا يستطيع:</strong> كتابة محتوى، رفع ملفات، تغيير أي شيء.<br><strong>الاستخدام الموصى به:</strong> للمستخدمين المسجلين الذين يحتاجون صلاحية قراءة محتوى خاص.</div></div></div>"
+    },
+    {
+      "type": "custom",
+      "title": "🛠️ كيفية التحكم في الصلاحيات — دليل عملي",
+      "body": "<h3 style=\"color:#1a1a2e;font-size:17px;margin:20px 0 12px;\">1️⃣ عبر لوحة تحكم WordPress (بدون إضافات)</h3><div class=\"problem-card\" style=\"margin-bottom:15px;\"><div class=\"p-desc\"><strong>إضافة مستخدم جديد:</strong><ul><li>لوحة التحكم ← <strong>المستخدمون</strong> ← <strong>أضف مستخدمًا جديدًا</strong></li><li>اختر الدور من القائمة المنسدلة (Administrator / Editor / Author / …)</li></ul><strong>تعديل دور مستخدم موجود:</strong><ul><li>لوحة التحكم ← <strong>المستخدمون</strong> ← <strong>كل المستخدمين</strong></li><li>مرر الماوس على اسم المستخدم ← اضغط <strong>تعديل</strong></li><li>غيّر الدور من القائمة المنسدلة ← <strong>حفظ</strong></li></ul><strong>حذف مستخدم:</strong><ul><li>لوحة التحكم ← <strong>المستخدمون</strong> ← <strong>كل المستخدمين</strong></li><li>مرر الماوس ← اضغط <strong>حذف</strong></li><li>⚠️ اختر <strong>تعيين جميع المقالات لمستخدم آخر</strong></li></ul></div></div><h3 style=\"color:#1a1a2e;font-size:17px;margin:20px 0 12px;\">2️⃣ إضافة User Role Editor — للتحكم المتقدم</h3><div class=\"problem-card\" style=\"margin-bottom:15px;\"><div class=\"p-desc\"><strong>التثبيت:</strong> لوحة التحكم ← إضافات ← أضف جديد ← ابحث عن <strong>User Role Editor</strong> ← ثبّت وفعّل<br><br><strong>المميزات:</strong><ul><li>➕ إنشاء أدوار مخصصة (Custom Roles)</li><li>🔘 تفعيل/تعطيل صلاحيات فردية</li><li>📋 نسخ صلاحيات من دور لآخر</li><li>🔄 إعادة تعيين الأدوار للوضع الافتراضي</li></ul><strong>مثال — إنشاء دور \"مدير محتوى\" مخصص:</strong><ul><li>افتح User Role Editor ← <strong>Add Role</strong></li><li>الاسم: <code>content_manager</code> ← العرض: <code>مدير محتوى</code></li><li>فعّل: <code>edit_posts, publish_posts, delete_posts, upload_files, edit_others_posts</code></li><li>عطّل: <code>install_plugins, update_core, manage_options</code></li><li>← <strong>Save Changes</strong></li></ul></div></div><h3 style=\"color:#1a1a2e;font-size:17px;margin:20px 0 12px;\">3️⃣ إضافة Members — بديل سهل وبسيط</h3><div class=\"problem-card\" style=\"margin-bottom:15px;\"><div class=\"p-desc\"><strong>التثبيت:</strong> لوحة التحكم ← إضافات ← ابحث عن <strong>Members</strong> ← ثبّت وفعّل<br><br><strong>المميزات:</strong><ul><li>واجهة سهلة لإدارة الأدوار</li><li>حماية المحتوى حسب الدور</li><li>إضافة أذونات على مستوى الصفحات والمقالات</li><li>مفتوح المصدر ومجاني</li></ul></div></div><h3 style=\"color:#1a1a2e;font-size:17px;margin:20px 0 12px;\">4️⃣ عبر قاعدة البيانات (MySQL / phpMyAdmin)</h3><div class=\"problem-card\" style=\"margin-bottom:15px;\"><div class=\"p-desc\">إذا لم تتمكن من الوصول للوحة التحكم:<ol><li>ادخل <strong>phpMyAdmin</strong> من cPanel</li><li>افتح قاعدة بيانات WordPress</li><li>جدول <strong>wp_users</strong> — اعرف user_id</li><li>جدول <strong>wp_usermeta</strong> — ابحث عن <code>wp_capabilities</code></li><li>غيّر قيمة meta_value:<br><div class=\"code-block\" style=\"margin-top:8px;\">a:1:{s:13:\"administrator\";b:1;}   ← Admin\na:1:{s:6:\"editor\";b:1;}              ← Editor\na:1:{s:6:\"author\";b:1;}              ← Author</div></li></ol></div></div>"
+    },
+    {
+      "type": "custom",
+      "title": "⚠️ توصيات أمنية للمستخدمين والصلاحيات",
+      "body": "<div class=\"problem-card\"><div class=\"p-desc\"><table style=\"width:100%;border-collapse:collapse;font-size:13px;\"><tr style=\"background:#1a1a2e;color:#fff;\"><th style=\"padding:8px 10px;text-align:right;\">#</th><th style=\"padding:8px 10px;text-align:right;\">التوصية</th><th style=\"padding:8px 10px;text-align:right;\">الأولوية</th></tr><tr><td style=\"padding:8px 10px;\">1</td><td style=\"padding:8px 10px;\"><strong>مبدأ أقل الصلاحيات:</strong> لا تعطِ Administrator إلا للضرورة القصوى. المحررين يعطون Editor، الكتّاب يعطون Author.</td><td style=\"padding:8px 10px;\"><span class=\"priority-high\">🔴 عالية</span></td></tr><tr><td style=\"padding:8px 10px;\">2</td><td style=\"padding:8px 10px;\"><strong>المصادقة الثنائية (2FA):</strong> ثبّت إضافة Wordfence Login Security أو Two Factor لتفعيل 2FA على حساب Admin.</td><td style=\"padding:8px 10px;\"><span class=\"priority-high\">🔴 عالية</span></td></tr><tr><td style=\"padding:8px 10px;\">3</td><td style=\"padding:8px 10px;\"><strong>المراجعة الدورية للمستخدمين:</strong> كل شهر، راجع قائمة المستخدمين واحذف أي حسابات غير نشطة.</td><td style=\"padding:8px 10px;\"><span class=\"priority-mid\">🟠 متوسطة</span></td></tr><tr><td style=\"padding:8px 10px;\">4</td><td style=\"padding:8px 10px;\"><strong>كلمات مرور قوية:</strong> استخدم كلمات مرور عشوائية (12+ حرف) لحساب Admin. استخدم 1Password أو Bitwarden.</td><td style=\"padding:8px 10px;\"><span class=\"priority-high\">🔴 عالية</span></td></tr><tr><td style=\"padding:8px 10px;\">5</td><td style=\"padding:8px 10px;\"><strong>عدم مشاركة حسابات Admin:</strong> كل مستخدم له حسابه الخاص. لا تشارك حساب Admin بين عدة أشخاص.</td><td style=\"padding:8px 10px;\"><span class=\"priority-high\">🔴 عالية</span></td></tr><tr><td style=\"padding:8px 10px;\">6</td><td style=\"padding:8px 10px;\"><strong>مراقبة تسجيل الدخول:</strong> استخدم Wordfence لمراقبة محاولات الدخول وتنبيهك عند نشاط غير معتاد.</td><td style=\"padding:8px 10px;\"><span class=\"priority-mid\">🟠 متوسطة</span></td></tr><tr><td style=\"padding:8px 10px;\">7</td><td style=\"padding:8px 10px;\"><strong>منع الوصول لـ wp-admin:</strong> استخدم <code>.htaccess</code> لحجب wp-login.php و wp-admin إلا من IPs محددة.</td><td style=\"padding:8px 10px;\"><span class=\"priority-high\">🔴 عالية</span></td></tr><tr><td style=\"padding:8px 10px;\">8</td><td style=\"padding:8px 10px;\"><strong>تعطيل محرر الملفات:</strong> أضف <code>define('DISALLOW_FILE_EDIT', true);</code> في <code>wp-config.php</code>.</td><td style=\"padding:8px 10px;\"><span class=\"priority-mid\">🟠 متوسطة</span></td></tr><tr><td style=\"padding:8px 10px;\">9</td><td style=\"padding:8px 10px;\"><strong>سجل التدقيق (Audit Log):</strong> ثبّت إضافة WP Activity Log لتسجيل كل التغييرات.</td><td style=\"padding:8px 10px;\"><span class=\"priority-low\">🔵 منخفضة</span></td></tr><tr><td style=\"padding:8px 10px;\">10</td><td style=\"padding:8px 10px;\"><strong>تغيير اسم المستخدم admin:</strong> إذا كان هناك مستخدم باسم \"admin\" أو \"admin_sys\"، احذفه فورًا.</td><td style=\"padding:8px 10px;\"><span class=\"priority-high\">🔴 عالية</span></td></tr></table></div></div>"
+    },
+    {
+      "type": "summary_boxes",
+      "title": "📊 ملخص الإنجاز",
+      "boxes": [
+        {
+          "value": "3",
+          "label": "مشاكل تم حلها",
+          "color": "#d4edda",
+          "textColor": "#155724"
+        },
+        {
+          "value": "11",
+          "label": "إضافة محدثة",
+          "color": "#fff3cd",
+          "textColor": "#856404"
+        },
+        {
+          "value": "3",
+          "label": "إضافات ضارة حذفت",
+          "color": "#f8d7da",
+          "textColor": "#721c24"
+        },
+        {
+          "value": "3",
+          "label": "مستخدمين محذوفين",
+          "color": "#f8d7da",
+          "textColor": "#721c24"
+        },
+        {
+          "value": "6",
+          "label": "أدوار موثقة",
+          "color": "#d1ecf1",
+          "textColor": "#0c5460"
+        },
+        {
+          "value": "10",
+          "label": "توصيات أمنية",
+          "color": "#e8d5f5",
+          "textColor": "#5b2c8c"
+        }
+      ]
+    },
+    {
+      "type": "conclusion",
+      "title": "✅ الخلاصة النهائية",
+      "text": "<strong>تم إصلاح جميع المشاكل وتأمين الموقع بالكامل.</strong><br><br><strong>الموقع:</strong> icssuae.com — <strong>الحالة:</strong> 🟢 شغال وآمن<br><br><strong>ما تم إنجازه إضافيًا:</strong><ul><li>📋 توثيق جميع أدوار المستخدمين والصلاحيات</li><li>🔐 شرح دقيق لمستوى صلاحية كل حساب</li><li>🛠️ دليل عملي للتحكم في الصلاحيات (لوحة التحكم + إضافات + قاعدة بيانات)</li><li>⚠️ 10 توصيات أمنية مع أولويات التنفيذ</li></ul>",
+      "items": [
+        "🔴 خطأ برمجي في Essential Addons — تم إصلاح الـ namespace",
+        "🔴 إضافة مقرصنة (Nulled) Astra — تم الحذف",
+        "🚨 اختراق Crypto Malware (Polygon Blockchain) — تم الحذف والتأمين",
+        "👥 3 مستخدمين غير مرغوب فيهم — تم الحذف",
+        "🔐 توثيق شامل لصلاحيات الأدوار"
+      ],
+      "footer": "تم إعداد هذا التقرير بواسطة الدعم الفني — 16 مايو 2026 (آخر تحديث: 21 مايو 2026)<br>© I CAMERA SECURITY SYSTEM - جميع الحقوق محفوظة"
+    }
+  ]
+}
